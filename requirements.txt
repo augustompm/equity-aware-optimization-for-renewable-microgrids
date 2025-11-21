@@ -1,0 +1,28 @@
+# Core Dependencies - Project P10
+# SysCon 2026 Submission
+# Last updated: 2025-11-03
+# Python 3.13 compatible versions
+
+# Data processing
+pandas>=2.2.0
+numpy>=1.26.0
+
+# Scientific computing
+scipy>=1.11.0
+
+# Testing
+pytest>=7.4.0
+pytest-cov>=4.1.0
+pytest-mock>=3.12.0
+
+# Data validation
+pydantic>=2.5.0
+
+# Visualization
+matplotlib>=3.8.0
+
+# Power system simulation (install separately if needed)
+# pypsa>=0.26.0
+
+# Multi-objective optimization (install separately if needed)
+# pymoo>=0.6.0
