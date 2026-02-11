@@ -42,8 +42,6 @@ class DataCache:
 
         self._config_hash = config_hash
 
-        print(f"[DataCache] Loaded: load={len(self.load_mw)}h, solar={len(self.solar_cf)}h, wind={len(self.wind_cf)}h")
-
     def get_arrays(self):
 
         return self.load_mw, self.solar_cf, self.wind_cf, self.temperature_c
