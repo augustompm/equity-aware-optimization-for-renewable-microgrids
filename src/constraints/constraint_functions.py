@@ -17,17 +17,13 @@ def constraint_bounds(x, bounds):
     return violation
 
 def constraint_area(x, area_params):
-
     area_pv = x.get('n_pv_kw', 0) * area_params['area_pv_per_kw']
     area_wind = x.get('n_wind_mw', 0) * area_params['area_wind_per_mw']
-    area_battery = x.get('e_battery_mwh', 0) * area_params['area_battery_per_mwh']
 
-    area_total = area_pv + area_wind + area_battery
-    area_limit = area_params['area_available_m2']
+    violation_pv = max(area_pv - area_params.get('area_available_pv_m2', float('inf')), 0.0)
+    violation_wind = max(area_wind - area_params.get('area_available_wind_m2', float('inf')), 0.0)
 
-    violation = max(area_total - area_limit, 0.0)
-
-    return violation
+    return violation_pv + violation_wind
 
 def constraint_lpsp(simulation_results, lpsp_limit=0.05):
 

@@ -1,5 +1,6 @@
 import numpy as np
-from simulation.system_simulator import simulate_system
+from simulation.system_simulator_fast import simulate_system_fast
+from simulation.data_cache import get_data_cache
 from metrics.additional_metrics import calculate_all_additional_metrics
 
 def calculate_solution_metrics(
@@ -39,9 +40,12 @@ def calculate_solution_metrics(
         'p_diesel_mw': diesel_mw
     }
 
-    objectives_dict, constraints_dict, dispatch_summary = simulate_system(
+    data_cache = get_data_cache()
+    data_cache.initialize(system_config)
+    objectives_dict, constraints_dict, dispatch_summary = simulate_system_fast(
         decision_vars=decision_vars_dict,
-        system_config=system_config
+        system_config=system_config,
+        data_cache=data_cache
     )
 
     additional_metrics = calculate_all_additional_metrics(
